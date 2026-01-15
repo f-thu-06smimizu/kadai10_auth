@@ -17,7 +17,7 @@
             心にある「澱」を言葉にする。
         </h1>
 
-        <form action="write.php" method="post">
+        <form action="write_new.php" method="post">
             <div class="input-area">
                 <textarea name="pain_point" placeholder=".................." required autofocus></textarea>
             </div>

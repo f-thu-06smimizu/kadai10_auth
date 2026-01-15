@@ -13,7 +13,7 @@ try {
     $pdo = new PDO('mysql:dbname=atora_db_260102;charset=utf8mb4;host=localhost', 'root', '');
 } catch (PDOException $e) {
     exit('DB接続エラー:' . $e->getMessage());
-}
+}[「「「「「「]
 
 // 3. SQL作成 (sage_routesテーブルへ挿入)
 $sql = "INSERT INTO sage_routes (experience_type, name, location_name, lat, lng, description, recommended_route, created_at) 

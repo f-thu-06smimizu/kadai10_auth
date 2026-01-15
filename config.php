@@ -1,29 +1,16 @@
 <?php
+function db_conn() {
+    $db_name = 'atora2026_atora_db';
+    $db_host = 'mysql3112.db.sakura.ne.jp';
+    $db_id   = 'atora2026';
+    $db_pw   = 'atora_260116'; 
 
-// PHPの開始タグ
-ini_set('display_errors', "On");
-error_reporting(E_ALL);
-
-if ($_SERVER['SERVER_NAME'] === 'localhost') {
-    $host = 'localhost';
-    $db   = 'atora_local_db'; 
-    $user = 'root';
-    $pass = '';
-} else {
-    $host = 'mysql3112.db.sakura.ne.jp'; // さくらのDBホスト名
-    $db   = 'atora2026_atora_db';
-    $user = 'atora2026'; 
-    $pass = ''; 
+    try {
+        $pdo = new PDO("mysql:host={$db_host};dbname={$db_name};charset=utf8mb4", $db_id, $db_pw);
+        return $pdo;
+    } catch (PDOException $e) {
+        // エラー内容に $db_host を含めて表示
+        exit('DB Connect Error(Host:'.$db_host.'):' . $e->getMessage());
+    }
 }
-
-$dsn = "mysql:host=$host;dbname=$db;charset=utf8mb4";
-$options = [
-    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-];
-
-try {
-     $pdo = new PDO($dsn, $user, $pass, $options);
-} catch (\PDOException $e) {
-     die("接続エラー: " . $e->getMessage());
-}
+?>
